@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">lifeindays</string>
+
+    <string name="textviewIntro">Enter your birthday to count each day of your life. Make
+                                 every one count!</string>
+    <string name="action_settings">Settings</string>
+    <string name="update_birthday">Update birthday</string>
+    <string name="pick_date">Whats your birthday?</string>
+    <string name="textviewTodayIs">Today is day </string>
+    <string name="textviewInLife">of your life.</string>
+    <string name="textviewDayCount">0</string>
+    <string name="textviewYouAre">You are</string>
+    <string name="textviewYearsOld">years old.</string>
+</resources>

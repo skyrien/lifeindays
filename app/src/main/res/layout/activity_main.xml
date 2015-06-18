@@ -1,0 +1,77 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".MainActivity">
+
+    <TextView   android:id="@+id/textviewIntro"
+                android:text="@string/textviewIntro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true" />
+
+    <TextView   android:id="@+id/textviewBirthday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textviewIntro" />
+
+    <Button
+        android:id="@+id/birthdayPickerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pick_date"
+        android:onClick="showDatePickerDialog"
+        android:layout_below="@id/textviewBirthday"
+        android:layout_centerHorizontal="true" />
+
+    <TextView   android:id="@+id/textviewTodayIs"
+        android:text="@string/textviewTodayIs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/birthdayPickerButton"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView   android:id="@+id/textviewDayCount"
+        android:text="@string/textviewDayCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textviewTodayIs"
+        android:layout_centerHorizontal="true"
+        android:textSize="72dp"
+        android:textStyle="italic" />
+
+    <TextView   android:id="@+id/textviewInLife"
+        android:text="@string/textviewInLife"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textviewDayCount"
+        android:layout_centerHorizontal="true" />
+
+    <TextView   android:id="@+id/textviewYouAre"
+        android:text="@string/textviewYouAre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textviewInLife"
+        android:layout_centerHorizontal="true" />
+
+    <TextView   android:id="@+id/textviewYears"
+        android:text="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textviewYouAre"
+        android:layout_centerHorizontal="true"
+        android:textSize="24dp"
+        android:textStyle="italic" />
+
+    <TextView   android:id="@+id/textviewYearsOld"
+        android:text="@string/textviewYearsOld"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textviewYears"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
