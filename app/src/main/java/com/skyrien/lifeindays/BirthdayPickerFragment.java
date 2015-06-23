@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.widget.DatePicker;
 
 import java.util.Calendar;
@@ -19,9 +20,12 @@ import java.util.Date;
 public class BirthdayPickerFragment extends DialogFragment
                         implements DatePickerDialog.OnDateSetListener {
 
+    private static final String TAG = "BirthdayPickerFragment";
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         //default value
+        Log.d(TAG, "onCreateDialog() called in BirthdayPickerFragment");
         final Calendar c = Calendar.getInstance();
         SharedPreferences settings = getActivity().getPreferences(0);
         int birthYear = settings.getInt("year", 0);
@@ -41,13 +45,11 @@ public class BirthdayPickerFragment extends DialogFragment
     }
 
     public void onDateSet(DatePicker view, int year, int month, int day) {
-        SharedPreferences settings = getActivity().getPreferences(0);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.putInt("year", year);
-        editor.putInt("month", month);
-        editor.putInt("day", day);
-        editor.commit();
-        ((MainActivity)getActivity()).updateView();
+        Log.d(TAG, "onDateSet() called in BirthdayPickerFragment");
+
+        ((MainActivity)getActivity()).updateBirthdayAndSave(year, month, day);
+        //((MainActivity)getActivity()).updateView();
     }
+
 
 }

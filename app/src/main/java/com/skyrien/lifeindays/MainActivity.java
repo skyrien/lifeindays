@@ -3,6 +3,8 @@ package com.skyrien.lifeindays;
 import android.app.DialogFragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -12,10 +14,19 @@ import android.widget.TextView;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
+//import java.util.logging.Handler;
 
 
 public class MainActivity extends ActionBarActivity {
     private static final String TAG = "MainActivity";
+    int i = 0;
+    int birthYear, birthMonth, birthDay;
+    final Handler myHandler = new Handler();
+    final Calendar birthdayCalendar = Calendar.getInstance();
+    TextView textviewDayCount;
+    TextView textviewYears;
 
     Date theBirthday = new Date();
 
@@ -23,12 +34,36 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d(TAG, "OnCreate() called in MainActivity");
+        Log.d(TAG, "onCreate() called in MainActivity");
 
-        // This is to update the view
-        updateView();
+        textviewDayCount = (TextView) findViewById(R.id.textviewDayCount);
+        textviewYears = (TextView) findViewById(R.id.textviewYears);
 
-    }
+        // get initial view from saved prefs... if there.
+        SharedPreferences settings = getPreferences(0);
+        birthYear = settings.getInt("year", 0);
+        birthMonth = settings.getInt("month", 0);
+        birthDay = settings.getInt("day", 0);
+
+        // Not set yet, set it to the current time
+        if ((birthYear + birthMonth + birthDay) == 0) {
+            birthYear = birthdayCalendar.get(Calendar.YEAR);
+            birthMonth = birthdayCalendar.get(Calendar.MONTH);
+            birthDay = birthdayCalendar.get(Calendar.DAY_OF_MONTH);
+        }
+        birthdayCalendar.set(birthYear, birthMonth, birthDay);
+        theBirthday = birthdayCalendar.getTime();
+
+        // Next, start the runnable.
+        Timer myTimer = new Timer();
+        myTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                i++;
+                myHandler.post(myRunnable);
+            }
+        },0,250);
+        }
 
     public void showDatePickerDialog(View v) {
         Log.d(TAG, "showDatePickerDialog() called in MainActivity");
@@ -37,34 +72,24 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void updateView() {
-        Log.d(TAG, "UpdateView() called in MainActivity");
-        int birthYear, birthMonth, birthDay;
+        //Log.d(TAG, "UpdateView() called in MainActivity");
+
         long currentTime, timeAlive, daysAlive;
         double yearsAlive;
-
-        TextView textviewDayCount = (TextView) findViewById(R.id.textviewDayCount);
-        TextView textviewYears = (TextView) findViewById(R.id.textviewYears);
-
-        SharedPreferences settings = getPreferences(0);
-        birthYear = settings.getInt("year", 0);
-        birthMonth = settings.getInt("month", 0);
-        birthDay = settings.getInt("day", 0);
-
-        final Calendar c = Calendar.getInstance();
-        c.set(birthYear, birthMonth, birthDay);
-        theBirthday = c.getTime();
+        double timeAliveDouble;
 
         currentTime = System.currentTimeMillis();
-        Log.i(TAG, "Current time is " + String.valueOf(currentTime));
+        //Log.d(TAG, "Current time is " + String.valueOf(currentTime));
         //today.setTime(currentTime);
 
         timeAlive = currentTime - theBirthday.getTime();
+        timeAliveDouble = (double) timeAlive;
         daysAlive = timeAlive / (1000 * 60 * 60 * 24);
-        yearsAlive = (double) timeAlive / (1000 * 60 * 60 * 24 * 365.24);
+        yearsAlive = timeAliveDouble / (1000 * 60 * 60 * 24 * 365.24);
+        Log.d(TAG, "yearsAlive is: " + String.valueOf(yearsAlive));
 
         textviewDayCount.setText(String.valueOf(daysAlive));
-        textviewYears.setText(String.valueOf(yearsAlive));
-
+        textviewYears.setText(String.valueOf(yearsAlive).substring(0,12));
 
     }
 
@@ -72,7 +97,7 @@ public class MainActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -83,13 +108,41 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_birthday) {
+            //showDatePickerDialog();
+
+            return true;
+        }
+
+        else if (id == R.id.action_about) {
+
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
+    final Runnable myRunnable = new Runnable() {
+        @Override
+        public void run() {
+            updateView();
+        }
+    };
 
+    public synchronized void updateBirthdayAndSave(int year, int month, int day) {
 
+        Log.d(TAG, "saveDateInPreferences() called in MainActivity");
+        SharedPreferences settings = getPreferences(0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putInt("year", year);
+        editor.putInt("month", month);
+        editor.putInt("day", day);
+        editor.commit();
+
+        birthYear = year;
+        birthMonth = month;
+        birthDay = day;
+        birthdayCalendar.set(year, month, day);
+        theBirthday = birthdayCalendar.getTime();
+    }
 }
