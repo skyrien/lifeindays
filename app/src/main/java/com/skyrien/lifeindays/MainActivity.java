@@ -25,7 +25,7 @@ import java.util.TimerTask;
 public class MainActivity extends ActionBarActivity {
     private static final String TAG = "MainActivity";
     int i = 0;
-    int birthYear, birthMonth, birthDay;
+
     final Handler myHandler = new Handler();
     final Calendar birthdayCalendar = Calendar.getInstance();
     TextView textviewDayCount;
@@ -46,6 +46,8 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate() called in MainActivity");
 
+        int birthYear, birthMonth, birthDay;
+
         textviewDayCount = (TextView) findViewById(R.id.textviewDayCount);
         textviewYears = (TextView) findViewById(R.id.textviewYears);
         textViewBirthdayValue = (TextView) findViewById(R.id.textviewBirthdayValue);
@@ -54,17 +56,9 @@ public class MainActivity extends ActionBarActivity {
         // LOADS THEM FROM SharedPreferences IF THERE
         // ELSE SETS THEM TO CURRENT DATE
         SharedPreferences settings = getPreferences(0);
-        birthYear = settings.getInt("year", 0);
-        birthMonth = settings.getInt("month", 0);
-        birthDay = settings.getInt("day", 0);
-
-        // Not set yet, set it to the current time
-        if ((birthYear + birthMonth + birthDay) == 0) {
-            birthYear = birthdayCalendar.get(Calendar.YEAR);
-            birthMonth = birthdayCalendar.get(Calendar.MONTH);
-            birthDay = birthdayCalendar.get(Calendar.DAY_OF_MONTH);
-        }
-
+        birthYear = settings.getInt("year", birthdayCalendar.get(Calendar.YEAR));
+        birthMonth = settings.getInt("month", birthdayCalendar.get(Calendar.MONTH));
+        birthDay = settings.getInt("day", birthdayCalendar.get(Calendar.DAY_OF_MONTH));
         birthdayCalendar.set(birthYear, birthMonth, birthDay);
         theBirthday = birthdayCalendar.getTime();
         textViewBirthdayValue.setText(dateFormatter.format(theBirthday));
@@ -79,12 +73,6 @@ public class MainActivity extends ActionBarActivity {
             }
         },0,50);
         }
-
-    public void showDatePickerDialog(View v) {
-        Log.d(TAG, "showDatePickerDialog(View v) called in MainActivity");
-        DialogFragment newFragment = new BirthdayPickerFragment();
-        newFragment.show(getFragmentManager(), "datePicker");
-    }
 
     public void showDatePickerDialog() {
         Log.d(TAG, "showDatePickerDialog() called in MainActivity");
@@ -153,11 +141,18 @@ public class MainActivity extends ActionBarActivity {
         editor.putInt("day", day);
         editor.commit();
 
+        /*
+        // Update the class variables
         birthYear = year;
         birthMonth = month;
         birthDay = day;
+*/
+
+        // Update the calendar object, and re-derive the Date object
         birthdayCalendar.set(year, month, day);
         theBirthday = birthdayCalendar.getTime();
+
+        // Update UI text for Birthday
         textViewBirthdayValue.setText(dateFormatter.format(theBirthday));
     }
 }

@@ -35,7 +35,8 @@
         android:id="@+id/textviewBirthdayValue"
         android:layout_alignBottom="@+id/textviewBirthday"
         android:layout_toRightOf="@+id/textviewBirthday"
-        android:layout_marginLeft="8dp" />
+        android:layout_marginLeft="8dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textviewYouAre"

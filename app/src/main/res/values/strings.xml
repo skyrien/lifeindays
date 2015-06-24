@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">lifeindays</string>
+    <string name="app_name">Life in Days</string>
 
     <string name="textviewIntro">Enter your birthday to count each day of your life. Make
                                  every one count!</string>
