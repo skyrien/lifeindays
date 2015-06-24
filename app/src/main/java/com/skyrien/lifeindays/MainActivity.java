@@ -12,6 +12,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Timer;
@@ -27,6 +29,11 @@ public class MainActivity extends ActionBarActivity {
     final Calendar birthdayCalendar = Calendar.getInstance();
     TextView textviewDayCount;
     TextView textviewYears;
+    NumberFormat yearFormatter = new DecimalFormat("##0.000000000");
+    NumberFormat dayFormattter = new DecimalFormat("0");
+
+    final double millisToDays = (1000 * 60 * 60 * 24);
+    final double millisToYears = 1000 * 60 * 60 * 24 * 365.24;
 
     Date theBirthday = new Date();
 
@@ -62,7 +69,7 @@ public class MainActivity extends ActionBarActivity {
                 i++;
                 myHandler.post(myRunnable);
             }
-        },0,200);
+        },0,50);
         }
 
     public void showDatePickerDialog(View v) {
@@ -74,22 +81,16 @@ public class MainActivity extends ActionBarActivity {
     public void updateView() {
         //Log.d(TAG, "UpdateView() called in MainActivity");
 
-        long currentTime, timeAlive, daysAlive;
+        long timeAlive, daysAlive;
         double yearsAlive;
-        double timeAliveDouble;
 
-        currentTime = System.currentTimeMillis();
-        //Log.d(TAG, "Current time is " + String.valueOf(currentTime));
-        //today.setTime(currentTime);
+        timeAlive = System.currentTimeMillis() - theBirthday.getTime();
+        daysAlive = (long)(timeAlive / millisToDays);
+        yearsAlive = timeAlive / (millisToYears);
+        //Log.d(TAG, "yearsAlive is: " + String.valueOf(yearsAlive));
 
-        timeAlive = currentTime - theBirthday.getTime();
-        timeAliveDouble = (double) timeAlive;
-        daysAlive = timeAlive / (1000 * 60 * 60 * 24);
-        yearsAlive = timeAliveDouble / (1000 * 60 * 60 * 24 * 365.24);
-        Log.d(TAG, "yearsAlive is: " + String.valueOf(yearsAlive));
-
-        textviewDayCount.setText(String.valueOf(daysAlive));
-        textviewYears.setText(String.valueOf(yearsAlive).substring(0,11));
+        textviewDayCount.setText(dayFormattter.format(daysAlive));
+        textviewYears.setText(yearFormatter.format(yearsAlive));
 
     }
 
