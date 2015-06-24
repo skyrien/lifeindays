@@ -28,11 +28,35 @@
         android:layout_below="@id/textviewBirthday"
         android:layout_centerHorizontal="true" />
 
+    <TextView   android:id="@+id/textviewYouAre"
+        android:text="@string/textviewYouAre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/birthdayPickerButton"
+        android:layout_centerHorizontal="true" />
+
+    <TextView   android:id="@+id/textviewYears"
+        android:text="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textviewYouAre"
+        android:textSize="48dp"
+        android:typeface="monospace"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold" />
+
+    <TextView   android:id="@+id/textviewYearsOld"
+        android:text="@string/textviewYearsOld"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textviewYears"
+        android:layout_centerHorizontal="true" />
+
     <TextView   android:id="@+id/textviewTodayIs"
         android:text="@string/textviewTodayIs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/birthdayPickerButton"
+        android:layout_below="@id/textviewYearsOld"
         android:layout_centerHorizontal="true"/>
 
     <TextView   android:id="@+id/textviewDayCount"
@@ -51,28 +75,6 @@
         android:layout_below="@id/textviewDayCount"
         android:layout_centerHorizontal="true" />
 
-    <TextView   android:id="@+id/textviewYouAre"
-        android:text="@string/textviewYouAre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textviewInLife"
-        android:layout_centerHorizontal="true" />
 
-    <TextView   android:id="@+id/textviewYears"
-        android:text="0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textviewYouAre"
-        android:textSize="24dp"
-        android:typeface="monospace"
-        android:layout_centerHorizontal="true"
-        android:textStyle="bold" />
-
-    <TextView   android:id="@+id/textviewYearsOld"
-        android:text="@string/textviewYearsOld"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textviewYears"
-        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

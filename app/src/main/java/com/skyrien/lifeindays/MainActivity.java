@@ -62,7 +62,7 @@ public class MainActivity extends ActionBarActivity {
                 i++;
                 myHandler.post(myRunnable);
             }
-        },0,250);
+        },0,200);
         }
 
     public void showDatePickerDialog(View v) {
@@ -89,7 +89,7 @@ public class MainActivity extends ActionBarActivity {
         Log.d(TAG, "yearsAlive is: " + String.valueOf(yearsAlive));
 
         textviewDayCount.setText(String.valueOf(daysAlive));
-        textviewYears.setText(String.valueOf(yearsAlive).substring(0,12));
+        textviewYears.setText(String.valueOf(yearsAlive).substring(0,11));
 
     }
 
