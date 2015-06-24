@@ -8,34 +8,47 @@
     android:gravity="center_horizontal"
     tools:context=".MainActivity">
 
-    <TextView   android:id="@+id/textviewIntro"
-                android:text="@string/textviewIntro"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true" />
-
-    <TextView   android:id="@+id/textviewBirthday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textviewIntro" />
-
-    <Button
-        android:id="@+id/birthdayPickerButton"
+    <TextView
+        android:id="@+id/textviewIntro"
+        android:text="@string/textviewIntro"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/pick_date"
-        android:onClick="showDatePickerDialog"
-        android:layout_below="@id/textviewBirthday"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentTop="true" />
 
-    <TextView   android:id="@+id/textviewYouAre"
+    <TextView
+        android:id="@+id/textviewBirthday"
+        android:text="@string/textviewYourBirthday"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/textviewIntro"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/textviewBirthdayValue"
+        android:layout_alignBottom="@+id/textviewBirthday"
+        android:layout_toRightOf="@+id/textviewBirthday"
+        android:layout_marginLeft="8dp" />
+
+    <TextView
+        android:id="@+id/textviewYouAre"
         android:text="@string/textviewYouAre"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/birthdayPickerButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/textviewBirthday"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp" />
 
-    <TextView   android:id="@+id/textviewYears"
+    <TextView
+        android:id="@+id/textviewYears"
         android:text="0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,21 +58,27 @@
         android:layout_centerHorizontal="true"
         android:textStyle="bold" />
 
-    <TextView   android:id="@+id/textviewYearsOld"
+    <TextView
+        android:id="@+id/textviewYearsOld"
         android:text="@string/textviewYearsOld"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textviewYears"
         android:layout_centerHorizontal="true" />
 
-    <TextView   android:id="@+id/textviewTodayIs"
+    <TextView
+        android:id="@+id/textviewTodayIs"
         android:text="@string/textviewTodayIs"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textviewYearsOld"
-        android:layout_centerHorizontal="true"/>
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/textviewYearsOld"
+        android:layout_centerHorizontal="true" />
 
-    <TextView   android:id="@+id/textviewDayCount"
+    <TextView
+        android:id="@+id/textviewDayCount"
         android:text="@string/textviewDayCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -68,12 +87,15 @@
         android:textSize="72dp"
         android:textStyle="bold" />
 
-    <TextView   android:id="@+id/textviewInLife"
+    <TextView
+        android:id="@+id/textviewInLife"
         android:text="@string/textviewInLife"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textviewDayCount"
         android:layout_centerHorizontal="true" />
+
 
 
 

@@ -11,4 +11,5 @@
     <string name="textviewYouAre">You are</string>
     <string name="textviewYearsOld">years old.</string>
     <string name="action_about">About...</string>
+    <string name="textviewYourBirthday">Your birthday is: </string>
 </resources>
