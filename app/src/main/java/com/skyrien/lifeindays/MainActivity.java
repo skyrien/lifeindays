@@ -32,6 +32,7 @@ public class MainActivity extends ActionBarActivity {
     TextView textviewYears;
     TextView textViewBirthdayValue;
     NumberFormat yearFormatter = new DecimalFormat("##0.000000000");
+    NumberFormat longYearFormatter = new DecimalFormat("##0.00000000");
     NumberFormat dayFormattter = new DecimalFormat("0");
     DateFormat dateFormatter = DateFormat.getDateInstance(DateFormat.MEDIUM);
 
@@ -74,6 +75,11 @@ public class MainActivity extends ActionBarActivity {
         },0,50);
         }
 
+    public void showDatePickerDialog(View v) {
+        Log.d(TAG, "showDatePickerDialog() called in MainActivity");
+        showDatePickerDialog();
+    }
+
     public void showDatePickerDialog() {
         Log.d(TAG, "showDatePickerDialog() called in MainActivity");
         DialogFragment newFragment = new BirthdayPickerFragment();
@@ -92,7 +98,9 @@ public class MainActivity extends ActionBarActivity {
         //Log.d(TAG, "yearsAlive is: " + String.valueOf(yearsAlive));
 
         textviewDayCount.setText(dayFormattter.format(daysAlive));
-        textviewYears.setText(yearFormatter.format(yearsAlive));
+        if (yearsAlive < 100)
+            textviewYears.setText(yearFormatter.format(yearsAlive));
+        else textviewYears.setText(longYearFormatter.format(yearsAlive));
 
     }
 
