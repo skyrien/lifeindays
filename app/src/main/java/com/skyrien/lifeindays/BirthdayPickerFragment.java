@@ -16,6 +16,7 @@ import java.util.Date;
 
 /**
  * Created by Alexander on 6/11/2015.
+ * This is the birthday picker used in the Life in Days app
  */
 public class BirthdayPickerFragment extends DialogFragment
                         implements DatePickerDialog.OnDateSetListener {
@@ -48,7 +49,7 @@ public class BirthdayPickerFragment extends DialogFragment
         Log.d(TAG, "onDateSet() called in BirthdayPickerFragment");
 
         ((MainActivity)getActivity()).updateBirthdayAndSave(year, month, day);
-        //((MainActivity)getActivity()).updateView();
+
     }
 
 

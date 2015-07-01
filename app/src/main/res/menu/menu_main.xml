@@ -7,6 +7,13 @@
         android:orderInCategory="100"
         app:showAsAction="never" />
 
+
+    <item
+        android:id="@+id/action_toggleMode"
+        android:title="@string/action_toggleMode"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+
     <item
         android:id="@+id/action_about"
         android:title="@string/action_about"

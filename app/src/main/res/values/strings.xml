@@ -1,15 +1,22 @@
 <resources>
     <string name="app_name">Life in Days</string>
-
     <string name="textviewIntro">Enter your birthday to count each day of your life. Make
                                  every one count!</string>
     <string name="action_birthday">Change birthday</string>
-    <string name="pick_date">Whats your birthday?</string>
+    <string name="pick_date">What\'s your birthday?</string>
     <string name="textviewTodayIs">Today is day </string>
     <string name="textviewInLife">of your life.</string>
     <string name="textviewDayCount">0</string>
     <string name="textviewYouAre">You are</string>
     <string name="textviewYearsOld">years old.</string>
     <string name="action_about">About...</string>
+    <string name="action_toggleMode">Switch mode</string>
     <string name="textviewYourBirthday">Your birthday is: </string>
+
+    <string name="textviewIntroModeTwo">Enter your life expectancy to count the days left in your life.</string>
+    <string name="textviewYourBirthdayModeTwo">Life expectancy (years): </string>
+    <string name="textviewYouAreModeTwo">You have</string>
+    <string name="textviewYearsOldModeTwo">years left.</string>
+    <string name="textviewTodayIsModeTwo">That\'s about</string>
+    <string name="textviewInLifeModeTwo">days remaining.</string>
 </resources>
