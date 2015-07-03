@@ -2,6 +2,7 @@
     <string name="app_name">Life in Days</string>
     <string name="textviewIntro">Enter your birthday to count each day of your life. Make
                                  every one count!</string>
+    <string name="about_app_name">About</string>
     <string name="action_birthday">Change birthday</string>
     <string name="pick_date">What\'s your birthday?</string>
     <string name="textviewTodayIs">Today is day </string>
@@ -19,4 +20,15 @@
     <string name="textviewYearsOldModeTwo">years left.</string>
     <string name="textviewTodayIsModeTwo">That\'s about</string>
     <string name="textviewInLifeModeTwo">days remaining.</string>
+    <string name="title_activity_about">AboutActivity</string>
+
+    <string name="textviewVersion">Version</string>
+    <string name="action_settings">Settings</string>
+    <string name="textview_author">Copyright \u00A9 2015 by skyrien</string>
+    <string name="textviewVersionNumber">0.1</string>
+    <string name="textviewDescription">I had been doing this calculation manually using various online tools.
+        Finally decided it was time to create an app out of it.\n\nSpecial thanks to Google for providing Android System Icons as
+    open source CC-BY.</string>
+
+
 </resources>

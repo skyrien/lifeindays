@@ -2,6 +2,7 @@ package com.skyrien.lifeindays;
 
 import android.app.Activity;
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -71,37 +72,52 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            if (s.length() == 0)
-                lifeExpectancy = 0;
-            else {
-                try {
-                    lifeExpectancy = Float.valueOf(String.valueOf(s));
-                }
-                catch (Exception e) {
-                    editTextBirthdayValue.setText(String.valueOf(lifeExpectancy));
+
+            String inputString = String.valueOf(s);
+            // This is the regex of this
+            if (inputString.matches("[\\d]*[.]?[\\d]*")) {
+                if (inputString.length() == 0)
+                    lifeExpectancy = 0;
+                else {
+                    try {
+                        lifeExpectancy = Float.valueOf(String.valueOf(s));
+                    }
+                    catch (Exception e) {
+                        e.printStackTrace();
+                        editTextBirthdayValue.setText(String.valueOf(lifeExpectancy));
+                    }
                 }
             }
+
         }
 
         @Override
         public void afterTextChanged(Editable s) {
-            editTextBirthdayValue.removeTextChangedListener(this);
-            if (s.length() == 0) {
-                lifeExpectancy = 0;
-                editTextBirthdayValue.setText("0");
-                editTextBirthdayValue.selectAll();
-            }
-            else {
-                try {
-                    lifeExpectancy = Float.valueOf(String.valueOf(s));
-                } catch (Exception e) {
-                    editTextBirthdayValue.setText(String.valueOf(lifeExpectancy));
+            String inputString = String.valueOf(s);
+            // This is the regex of this
+            if (inputString.matches("[\\d]*[.]?[\\d]*")) {
+                editTextBirthdayValue.removeTextChangedListener(this);
+                if (s.length() == 0) {
+                    lifeExpectancy = 0;
+                    editTextBirthdayValue.setText("0");
+                    editTextBirthdayValue.selectAll();
                 }
+                else {
+                    try {
+                        lifeExpectancy = Float.valueOf(String.valueOf(s));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        editTextBirthdayValue.setText(String.valueOf(lifeExpectancy));
+                    }
+                }
+
+                editTextBirthdayValue.addTextChangedListener(this);
+                saveLifeExpectancy(lifeExpectancy);
+                //editTextBirthdayValue.removeTextChangedListener(this);
+
             }
 
-            editTextBirthdayValue.addTextChangedListener(this);
-            saveLifeExpectancy(lifeExpectancy);
-            //editTextBirthdayValue.removeTextChangedListener(this);
+
         }
     };
 
@@ -142,7 +158,7 @@ public class MainActivity extends ActionBarActivity {
         birthYear = settings.getInt("year", birthdayCalendar.get(Calendar.YEAR));
         birthMonth = settings.getInt("month", birthdayCalendar.get(Calendar.MONTH));
         birthDay = settings.getInt("day", birthdayCalendar.get(Calendar.DAY_OF_MONTH));
-        lifeExpectancy = settings.getFloat("lifeExpectancy", 100);
+        lifeExpectancy = settings.getFloat("lifeExpectancy", 85);
 
         // THIS LOADS THE PREVIOUS VIEW AND MAKES SURE ITS THE CURRENT ONE
         viewIsLifeCounter = settings.getInt("viewIsLifeCounter", 1) == 1;
@@ -151,6 +167,10 @@ public class MainActivity extends ActionBarActivity {
         // timezone
         birthdayCalendar.set(birthYear, birthMonth, birthDay, 0, 0, 1);
         theBirthday = birthdayCalendar.getTime();
+
+        // Now set the action bar
+        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
+
         setTextBasedOnMode(viewIsLifeCounter);
 
         // Next, start the runnable.
@@ -281,6 +301,9 @@ public class MainActivity extends ActionBarActivity {
         }
 
         else if (id == R.id.action_about) {
+
+            Intent intent = new Intent(this, AboutActivity.class);
+            startActivity(intent);
 
             return true;
         }
