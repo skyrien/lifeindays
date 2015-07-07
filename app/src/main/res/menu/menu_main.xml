@@ -1,24 +1,27 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
-    <item
-        android:id="@+id/action_birthday"
-        android:title="@string/action_birthday"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
-
 
     <item
         android:id="@+id/action_toggleMode"
         android:title="@string/action_toggleMode"
         android:orderInCategory="100"
-        app:showAsAction="never" />
+        android:icon="@mipmap/ic_swaparrows"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_birthday"
+        android:title="@string/action_birthday"
+        android:orderInCategory="100"
+        android:icon="@mipmap/ic_today"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_about"
         android:title="@string/action_about"
         android:orderInCategory="100"
-        app:showAsAction="never" />
+        android:icon="@mipmap/ic_info"
+        app:showAsAction="ifRoom" />
 
 
 </menu>

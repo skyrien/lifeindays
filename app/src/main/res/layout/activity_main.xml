@@ -64,8 +64,7 @@
         android:layout_below="@id/textviewYouAre"
         android:textSize="48dp"
         android:typeface="monospace"
-        android:layout_centerHorizontal="true"
-        android:textStyle="bold" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/textviewYearsOld"
@@ -94,7 +93,8 @@
         android:layout_below="@id/textviewTodayIs"
         android:layout_centerHorizontal="true"
         android:textSize="72dp"
-        android:textStyle="bold" />
+
+        />
 
     <TextView
         android:id="@+id/textviewInLife"

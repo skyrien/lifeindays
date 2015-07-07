@@ -60,10 +60,19 @@ public class MainActivity extends ActionBarActivity {
     // These are static variables for our app
     static float lifeExpectancy = 0;
     static Date theBirthday = new Date();
-    static boolean viewIsLifeCounter = true;
+    static boolean viewIsLifeCounter = true; // The current view mode is defined here
     Timer myTimer = new Timer();
 
+    // This is the runnable loop that keeps updating the view.
+    final Runnable myRunnable = new Runnable() {
+        @Override
+        public void run() {
+            updateView();
+        }
+    };
+
     // A TextWatcher object which we'll use in the app
+    // This object watches for user-entered changes on the LifeExpectancy view.
     TextWatcher myWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -74,29 +83,38 @@ public class MainActivity extends ActionBarActivity {
         public void onTextChanged(CharSequence s, int start, int before, int count) {
 
             String inputString = String.valueOf(s);
+            editTextBirthdayValue.removeTextChangedListener(this);
+
             // This is the regex of this
             if (inputString.matches("[\\d]*[.]?[\\d]*")) {
                 if (inputString.length() == 0)
                     lifeExpectancy = 0;
                 else {
                     try {
-                        lifeExpectancy = Float.valueOf(String.valueOf(s));
+                        lifeExpectancy = Float.valueOf(inputString);
                     }
                     catch (Exception e) {
                         e.printStackTrace();
+                        Log.d(TAG, "Error parsing text entry. Not a float.");
                         editTextBirthdayValue.setText(String.valueOf(lifeExpectancy));
                     }
                 }
             }
+            else {
+                Log.d(TAG, "Invalid characters entered.");
+                editTextBirthdayValue.setText(String.valueOf(lifeExpectancy));
+            }
+            editTextBirthdayValue.addTextChangedListener(this);
 
         }
 
         @Override
         public void afterTextChanged(Editable s) {
             String inputString = String.valueOf(s);
+            editTextBirthdayValue.removeTextChangedListener(this);
             // This is the regex of this
             if (inputString.matches("[\\d]*[.]?[\\d]*")) {
-                editTextBirthdayValue.removeTextChangedListener(this);
+
                 if (s.length() == 0) {
                     lifeExpectancy = 0;
                     editTextBirthdayValue.setText("0");
@@ -104,30 +122,28 @@ public class MainActivity extends ActionBarActivity {
                 }
                 else {
                     try {
-                        lifeExpectancy = Float.valueOf(String.valueOf(s));
+                        lifeExpectancy = Float.valueOf(inputString);
                     } catch (Exception e) {
                         e.printStackTrace();
+                        Log.d(TAG, "Error parsing text entry. Not a float.");
                         editTextBirthdayValue.setText(String.valueOf(lifeExpectancy));
                     }
                 }
-
-                editTextBirthdayValue.addTextChangedListener(this);
                 saveLifeExpectancy(lifeExpectancy);
                 //editTextBirthdayValue.removeTextChangedListener(this);
 
             }
+            else {
+                Log.d(TAG, "Invalid characters entered.");
+                editTextBirthdayValue.setText(String.valueOf(lifeExpectancy));
+            }
+            editTextBirthdayValue.addTextChangedListener(this);
+
 
 
         }
     };
 
-    // This is the runnable loop that keeps updating the view.
-    final Runnable myRunnable = new Runnable() {
-        @Override
-        public void run() {
-            updateView();
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

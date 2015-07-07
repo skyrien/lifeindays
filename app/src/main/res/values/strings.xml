@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Life in Days</string>
-    <string name="textviewIntro">Enter your birthday to count each day of your life. Make
-                                 every one count!</string>
+    <string name="textviewIntro">Enter your birthday to count the days of your life. Make
+                                 each one count!</string>
     <string name="about_app_name">About</string>
     <string name="action_birthday">Change birthday</string>
     <string name="pick_date">What\'s your birthday?</string>
@@ -29,7 +29,7 @@
     <string name="textviewDescription">Life in Days is a simple tool that shows you how many days you\'ve lived and your age in years. Additionally, it also can show you an how long you have to live based on an entered life expectancy.
         \n\nThe average life expectancy in the US is 79.56 years in 2015--29,058.5 days. This app is a reminder to make every day count!
         \n\nThanks to Google for providing Android System Icons under
-    CC-BY. It was used, modified, in the app icon.</string>
+    CC-BY. The AV clock icon was used, modified, in the app icons.</string>
 
     <string name="textviewReleaseNotesTitle">Version Roadmap</string>
     <string name="textviewReleaseNotesText">Version 0.1 - July 2015\n - Life and day counters added
