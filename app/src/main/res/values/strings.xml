@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Life in Days</string>
+    <string name="app_name">Life Counter</string>
     <string name="textviewIntro">Enter your birthday to count the days of your life. Make
                                  each one count!</string>
     <string name="about_app_name">About</string>
@@ -25,19 +25,19 @@
     <string name="textviewVersion">Version</string>
     <string name="action_settings">Settings</string>
     <string name="textview_author">Copyright \u00A9 2015 by skyrien</string>
-    <string name="textviewVersionNumber">0.1</string>
-    <string name="textviewDescription">Life in Days is a simple tool that shows you how many days you\'ve lived and your age in years. Additionally, it also can show you an how long you have to live based on an entered life expectancy.
+    <string name="textviewVersionNumber">0.2</string>
+    <string name="textviewDescription">Life Counter is a simple tool that shows you how many days you\'ve lived and your age in years. Additionally, it also can show you an how long you have to live based on an entered life expectancy.
         \n\nThe average life expectancy in the US is 79.56 years in 2015--29,058.5 days. This app is a reminder to make every day count!
         \n\nThanks to Google for providing Android System Icons under
     CC-BY. The AV clock icon was used, modified, in the app icons.</string>
 
     <string name="textviewReleaseNotesTitle">Version Roadmap</string>
-    <string name="textviewReleaseNotesText">Version 0.1 - July 2015\n - Life and day counters added
+    <string name="textviewReleaseNotesText">Version 0.2 - July 2015\n - Life and day counters added
         \n - Life expectancy counter added\n
         \n
-        Version 0.2 (next)\n
+        Version 0.3 (next)\n
         - Widget support for counters\n\n
-        Version 0.3 (future)\n
+        Version 0.4 (future)\n
         - Android Wear and/or notification support</string>
 
 
