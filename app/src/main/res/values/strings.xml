@@ -25,14 +25,14 @@
     <string name="textviewVersion">Version</string>
     <string name="action_settings">Settings</string>
     <string name="textview_author">Copyright \u00A9 2015 by skyrien</string>
-    <string name="textviewVersionNumber">0.2</string>
-    <string name="textviewDescription">Life Counter is a simple tool that shows you how many days you\'ve lived and your age in years. Additionally, it also can show you an how long you have to live based on an entered life expectancy.
+    <string name="textviewVersionNumber">0.21</string>
+    <string name="textviewDescription">Life Counter is a simple tool that shows you how many days you\'ve lived and your age in years. It also shows you how long you have to live based on an entered life expectancy.
         \n\nThe average life expectancy in the US is 79.56 years in 2015--29,058.5 days. This app is a reminder to make every day count!
         \n\nThanks to Google for providing Android System Icons under
-    CC-BY. The AV clock icon was used, modified, in the app icons.</string>
+    CC-BY. Some icons were used, others modified, for the icons used in this app.</string>
 
     <string name="textviewReleaseNotesTitle">Version Roadmap</string>
-    <string name="textviewReleaseNotesText">Version 0.2 - July 2015\n - Life and day counters added
+    <string name="textviewReleaseNotesText">Version 0.21 - July 2015\n - Life and day counters added
         \n - Life expectancy counter added\n
         \n
         Version 0.3 (next)\n
