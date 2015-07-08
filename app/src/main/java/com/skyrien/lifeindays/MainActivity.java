@@ -55,7 +55,7 @@ public class MainActivity extends ActionBarActivity {
     InputFilter[] filterArrayBirthday;
 
     final double millisToDays = 1000 * 60 * 60 * 24;
-    final double millisToYears = 1000 * 60 * 60 * 24 * 365.24;
+    final double millisToYears = 1000 * 60 * 60 * 24 * 365.2425;
 
     // These are static variables for our app
     static float lifeExpectancy = 0;
